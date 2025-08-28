@@ -36,7 +36,6 @@ docker-compose up -d web
 ```
 http://localhost:8000/docs
 ```
-## 4. API
 Вопросы:
 ```
 GET /api/v1/questions/  -  Получить список всех вопросов
