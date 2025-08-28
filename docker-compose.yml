@@ -1,0 +1,29 @@
+services:
+  web:
+    build: .
+    container_name: fastapi_app
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    entrypoint: ["/app/entrypoint.sh"]
+    command: >
+      gunicorn -k uvicorn.workers.UvicornWorker main:app -b 0.0.0.0:8000 -w 4 --log-level info
+    restart: always
+    volumes:
+      - ./database/alembic/versions:/app/database/alembic/versions
+      - ./logs:/app/logs
+
+  db:
+    image: postgres:15
+    container_name: fastapi_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
