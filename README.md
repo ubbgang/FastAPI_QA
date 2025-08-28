@@ -13,7 +13,7 @@ POSTGRES_USER=<your_username>
 POSTGRES_PASSWORD=<your_password>
 POSTGRES_DB=<database_name>
 
-# Юзер БД с ограниченными правами (не создается автоматически, можно не указывать)
+# Юзер БД с ограниченными правами (Не создается автоматически. Если не указан, будет использоваться юзер с полными правами )
 APP_DB_USER=<your_username>
 APP_DB_PASSWORD=<your_password>
 
@@ -32,18 +32,18 @@ docker-compose up -d db
 docker-compose up -d web
 ```
 ## 3. Документация API
-Если ENV=dev, документация будет доступна по адресу:
+Если окружение dev (ENV=dev), документация будет доступна по адресу:
 ```
 http://localhost:8000/docs
 ```
-Вопросы:
+Вопросы эндпоинты:
 ```
 GET /api/v1/questions/  -  Получить список всех вопросов
 POST /api/v1/questions/  -  Создать новый вопрос
 GET /api/v1/questions/{id}  -  Получить вопрос и все ответы на него
 DELETE /api/v1/questions/{id}  -  Удалить вопрос вместе с ответами
 ```
-Ответы:
+Ответы эндпоинты:
 ```
 POST /api/v1/questions/{id}/answers/  -  Добавить ответ к вопросу
 GET /api/v1/answers/{id}  -  Получить конкретный ответ
